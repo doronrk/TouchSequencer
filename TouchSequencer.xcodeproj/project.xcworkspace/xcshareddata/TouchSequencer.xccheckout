@@ -12,26 +12,38 @@
 	<dict>
 		<key>2DE9C8846D9375EAACFABA8963120E8E7719BAF5</key>
 		<string>https://github.com/openframeworks/openFrameworks.git</string>
+		<key>4D39CE10D2A68034CD6EBCF0883ABE960E978FE4</key>
+		<string>https://github.com/doronrk/TouchSequencer.git</string>
 		<key>8F000071CE7F4AC671BD6E9084D7C2A0B99F7D99</key>
 		<string>https://github.com/jens-a-e/ofxMultiTouchPad.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>apps/myApps/TouchSequencer/TouchSequencer.xcodeproj</string>
+	<string>TouchSequencer.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>2DE9C8846D9375EAACFABA8963120E8E7719BAF5</key>
-		<string>../../../../..</string>
+		<string>../../..</string>
+		<key>4D39CE10D2A68034CD6EBCF0883ABE960E978FE4</key>
+		<string>../..</string>
 		<key>8F000071CE7F4AC671BD6E9084D7C2A0B99F7D99</key>
-		<string>../../../../..addons/ofxMultiTouchPad</string>
+		<string>../../../addons/ofxMultiTouchPad</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
-	<string>https://github.com/openframeworks/openFrameworks.git</string>
+	<string>https://github.com/doronrk/TouchSequencer.git</string>
 	<key>IDESourceControlProjectVersion</key>
 	<integer>111</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>2DE9C8846D9375EAACFABA8963120E8E7719BAF5</string>
+	<string>4D39CE10D2A68034CD6EBCF0883ABE960E978FE4</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>2DE9C8846D9375EAACFABA8963120E8E7719BAF5</string>
+			<key>IDESourceControlWCCName</key>
+			<string></string>
+		</dict>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
@@ -44,9 +56,9 @@
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>2DE9C8846D9375EAACFABA8963120E8E7719BAF5</string>
+			<string>4D39CE10D2A68034CD6EBCF0883ABE960E978FE4</string>
 			<key>IDESourceControlWCCName</key>
-			<string>openFrameworks</string>
+			<string>TouchSequencer</string>
 		</dict>
 	</array>
 </dict>

@@ -2,18 +2,19 @@
 
 //--------------------------------------------------------------
 void ofApp::setup(){
-    pad = ofxMultiTouchPad();
+//    pad = ofxMultiTouchPad();
+    playhead = new Playhead(ofVec2f(2, 3), ofVec2f(1, 1));
+    node = ofVec2f(300, 300);
 }
 
 //--------------------------------------------------------------
-void ofApp::update(){
-
+void ofApp::update()
+{
+    playhead->update();
 }
 
-//--------------------------------------------------------------
-void ofApp::draw(){
-    ofEnableSmoothing();
-    
+void ofApp::manageTouch()
+{
     /*
      Use the MTouch datatype for more information on touches
      */
@@ -27,9 +28,10 @@ void ofApp::draw(){
         ofTranslate(touch->x*ofGetWidth(), touch->y*ofGetHeight());
         ofRotate(touch->angle);
         ofEllipse(0, 0, size, size*.5);
+        //        cerr << "id: " << touch->ID << endl;
         ofPopMatrix();
     }
-    
+    //    cerr << "end" << endl;
     
     /*
      Iterate over all touches as a vector of ofPoints Ð very simple datatype though...
@@ -48,9 +50,19 @@ void ofApp::draw(){
     ofDrawBitmapStringHighlight(info, 20, 20);
 }
 
+
+//--------------------------------------------------------------
+void ofApp::draw(){
+    ofEnableSmoothing();
+    ofSetBackgroundColor(0, 0, 0);
+    playhead->draw();
+    ofCircle(node, 25);
+}
+
 //--------------------------------------------------------------
 void ofApp::keyPressed(int key){
-
+    float pe = playhead->getProjectionError(node);
+    cerr << "pe: " << pe << endl;
 }
 
 //--------------------------------------------------------------

@@ -17,3 +17,5 @@
 
 * double tap on a node quantizes its position
 * sends osc to live
+
+\sum_{i=1}^{n} \sum_{j=1}^{n} z_{i} K_{(i j)} z_{j} \\

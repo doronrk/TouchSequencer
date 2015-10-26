@@ -7,7 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1B657EDACB3A32534170C015 /* ofxMultiTouchPad.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5AF019E6FF73BEC625995939 /* ofxMultiTouchPad.cpp */; };
+		51AB69891BDEA49700D5285C /* Playhead.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 51AB69871BDEA49700D5285C /* Playhead.cpp */; };
+		51CC0F261BD856A700C3D478 /* ofxMultiTouchPad.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 51CC0F241BD856A700C3D478 /* ofxMultiTouchPad.cpp */; };
 		51CC83CF1BD4927500B3D041 /* MultitouchSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 51CC83CE1BD4927500B3D041 /* MultitouchSupport.framework */; };
 		BBAB23CB13894F3D00AA2426 /* GLUT.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = BBAB23BE13894E4700AA2426 /* GLUT.framework */; };
 		E4328149138ABC9F0047C5CB /* openFrameworksDebug.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E4328148138ABC890047C5CB /* openFrameworksDebug.a */; };
@@ -61,10 +62,12 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		51AB69871BDEA49700D5285C /* Playhead.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Playhead.cpp; sourceTree = "<group>"; };
+		51AB69881BDEA49700D5285C /* Playhead.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Playhead.h; sourceTree = "<group>"; };
+		51CC0F231BD856A700C3D478 /* MTTypes.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MTTypes.h; sourceTree = "<group>"; };
+		51CC0F241BD856A700C3D478 /* ofxMultiTouchPad.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ofxMultiTouchPad.cpp; sourceTree = "<group>"; };
+		51CC0F251BD856A700C3D478 /* ofxMultiTouchPad.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ofxMultiTouchPad.h; sourceTree = "<group>"; };
 		51CC83CE1BD4927500B3D041 /* MultitouchSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MultitouchSupport.framework; path = ../../../../../../../../System/Library/PrivateFrameworks/MultitouchSupport.framework; sourceTree = "<group>"; };
-		5AF019E6FF73BEC625995939 /* ofxMultiTouchPad.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = ofxMultiTouchPad.cpp; path = ../../../addons/ofxMultiTouchPad/src/ofxMultiTouchPad.cpp; sourceTree = SOURCE_ROOT; };
-		904F1B4D99D29AAD0170DDE8 /* MTTypes.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = MTTypes.h; path = ../../../addons/ofxMultiTouchPad/src/MTTypes.h; sourceTree = SOURCE_ROOT; };
-		AC4C999909EEBA320C0E6325 /* ofxMultiTouchPad.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxMultiTouchPad.h; path = ../../../addons/ofxMultiTouchPad/src/ofxMultiTouchPad.h; sourceTree = SOURCE_ROOT; };
 		BBAB23BE13894E4700AA2426 /* GLUT.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLUT.framework; path = ../../../libs/glut/lib/osx/GLUT.framework; sourceTree = "<group>"; };
 		E4328143138ABC890047C5CB /* openFrameworksLib.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = openFrameworksLib.xcodeproj; path = ../../../libs/openFrameworksCompiled/project/osx/openFrameworksLib.xcodeproj; sourceTree = SOURCE_ROOT; };
 		E45BE9710E8CC7DD009D7055 /* AGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AGL.framework; path = /System/Library/Frameworks/AGL.framework; sourceTree = "<absolute>"; };
@@ -118,18 +121,29 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		0B520A8F9CBD72DD1ACC7E64 /* ofxMultiTouchPad */ = {
+		51CC0F211BD856A700C3D478 /* ofxMultiTouchPadDoron */ = {
 			isa = PBXGroup;
 			children = (
-				E443632A9DA1C74D78AA5CF9 /* src */,
+				51CC0F221BD856A700C3D478 /* src */,
 			);
-			name = ofxMultiTouchPad;
+			name = ofxMultiTouchPadDoron;
+			sourceTree = "<group>";
+		};
+		51CC0F221BD856A700C3D478 /* src */ = {
+			isa = PBXGroup;
+			children = (
+				51CC0F231BD856A700C3D478 /* MTTypes.h */,
+				51CC0F241BD856A700C3D478 /* ofxMultiTouchPad.cpp */,
+				51CC0F251BD856A700C3D478 /* ofxMultiTouchPad.h */,
+			);
+			name = src;
+			path = ../../../addons/ofxMultiTouchPadDoron/src;
 			sourceTree = "<group>";
 		};
 		BB4B014C10F69532006C3DED /* addons */ = {
 			isa = PBXGroup;
 			children = (
-				0B520A8F9CBD72DD1ACC7E64 /* ofxMultiTouchPad */,
+				51CC0F211BD856A700C3D478 /* ofxMultiTouchPadDoron */,
 			);
 			name = addons;
 			sourceTree = "<group>";
@@ -171,16 +185,6 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		E443632A9DA1C74D78AA5CF9 /* src */ = {
-			isa = PBXGroup;
-			children = (
-				904F1B4D99D29AAD0170DDE8 /* MTTypes.h */,
-				5AF019E6FF73BEC625995939 /* ofxMultiTouchPad.cpp */,
-				AC4C999909EEBA320C0E6325 /* ofxMultiTouchPad.h */,
-			);
-			name = src;
-			sourceTree = "<group>";
-		};
 		E45BE5980E8CC70C009D7055 /* frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -210,6 +214,8 @@
 				E4B69E1D0A3A1BDC003C02F2 /* main.cpp */,
 				E4B69E1E0A3A1BDC003C02F2 /* ofApp.cpp */,
 				E4B69E1F0A3A1BDC003C02F2 /* ofApp.h */,
+				51AB69871BDEA49700D5285C /* Playhead.cpp */,
+				51AB69881BDEA49700D5285C /* Playhead.h */,
 			);
 			path = src;
 			sourceTree = SOURCE_ROOT;
@@ -311,8 +317,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				E4B69E200A3A1BDC003C02F2 /* main.cpp in Sources */,
+				51AB69891BDEA49700D5285C /* Playhead.cpp in Sources */,
+				51CC0F261BD856A700C3D478 /* ofxMultiTouchPad.cpp in Sources */,
 				E4B69E210A3A1BDC003C02F2 /* ofApp.cpp in Sources */,
-				1B657EDACB3A32534170C015 /* ofxMultiTouchPad.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -481,6 +488,7 @@
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_52)",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)Debug";
+				USER_HEADER_SEARCH_PATHS = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -567,6 +575,7 @@
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_51)",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				USER_HEADER_SEARCH_PATHS = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
