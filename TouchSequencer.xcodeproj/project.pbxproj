@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		51AB69891BDEA49700D5285C /* Playhead.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 51AB69871BDEA49700D5285C /* Playhead.cpp */; };
+		51AB698D1BDEC49F00D5285C /* Util.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 51AB698B1BDEC49F00D5285C /* Util.cpp */; };
 		51CC0F261BD856A700C3D478 /* ofxMultiTouchPad.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 51CC0F241BD856A700C3D478 /* ofxMultiTouchPad.cpp */; };
 		51CC83CF1BD4927500B3D041 /* MultitouchSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 51CC83CE1BD4927500B3D041 /* MultitouchSupport.framework */; };
 		BBAB23CB13894F3D00AA2426 /* GLUT.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = BBAB23BE13894E4700AA2426 /* GLUT.framework */; };
@@ -64,6 +65,8 @@
 /* Begin PBXFileReference section */
 		51AB69871BDEA49700D5285C /* Playhead.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Playhead.cpp; sourceTree = "<group>"; };
 		51AB69881BDEA49700D5285C /* Playhead.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Playhead.h; sourceTree = "<group>"; };
+		51AB698B1BDEC49F00D5285C /* Util.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Util.cpp; sourceTree = "<group>"; };
+		51AB698C1BDEC49F00D5285C /* Util.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Util.h; sourceTree = "<group>"; };
 		51CC0F231BD856A700C3D478 /* MTTypes.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MTTypes.h; sourceTree = "<group>"; };
 		51CC0F241BD856A700C3D478 /* ofxMultiTouchPad.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ofxMultiTouchPad.cpp; sourceTree = "<group>"; };
 		51CC0F251BD856A700C3D478 /* ofxMultiTouchPad.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ofxMultiTouchPad.h; sourceTree = "<group>"; };
@@ -216,6 +219,8 @@
 				E4B69E1F0A3A1BDC003C02F2 /* ofApp.h */,
 				51AB69871BDEA49700D5285C /* Playhead.cpp */,
 				51AB69881BDEA49700D5285C /* Playhead.h */,
+				51AB698B1BDEC49F00D5285C /* Util.cpp */,
+				51AB698C1BDEC49F00D5285C /* Util.h */,
 			);
 			path = src;
 			sourceTree = SOURCE_ROOT;
@@ -320,6 +325,7 @@
 				51AB69891BDEA49700D5285C /* Playhead.cpp in Sources */,
 				51CC0F261BD856A700C3D478 /* ofxMultiTouchPad.cpp in Sources */,
 				E4B69E210A3A1BDC003C02F2 /* ofApp.cpp in Sources */,
+				51AB698D1BDEC49F00D5285C /* Util.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

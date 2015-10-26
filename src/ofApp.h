@@ -6,7 +6,7 @@
 
 
 class ofApp : public ofBaseApp{
-    ofxMultiTouchPad pad;
+//    ofxMultiTouchPad pad;
     std::vector<ofPoint> touches;
 
 public:

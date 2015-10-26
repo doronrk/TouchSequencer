@@ -23,8 +23,9 @@ public:
     void update();
     
     // Returns the distance (projection error) from ofPoint p to the visible line of the playhead
-    // Points to the left of the playhead will have a negative projection error, points to the right of the playhead will have a positive projection error.
-    float getProjectionError(ofPoint p);
+    // Points that lie in the direction of the playhead will have a positive distance.
+    // Points that lie behind the direction of the playhead will have a negative distance.
+    float getDistance(ofPoint p);
     
 private:
     // A vector with magnitude corresponding to the speed of the playhead, elements corresponding to direction
