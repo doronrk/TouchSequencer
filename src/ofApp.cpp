@@ -3,7 +3,10 @@
 //--------------------------------------------------------------
 void ofApp::setup(){
 //    pad = ofxMultiTouchPad();
-    playhead = new Playhead(ofVec2f(0, 0), ofVec2f(1, 1));
+//    playhead = new Playhead(ofVec2f(0, 0), ofVec2f(1, 1));
+//    ofVec2f initialPos = ofVec2f(200, 200);
+//    PlayheadSeed* seed = new PlayheadSeed(initialPos);
+//    playhead = seed->toPlayhead();
     node = ofVec2f(300, 300);
 //    ofSetFrameRate(1);
 }

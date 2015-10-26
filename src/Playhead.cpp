@@ -31,11 +31,6 @@ void Playhead::update()
     float distToTopRightCorner = getDistance(topRightCorner);
     float distToBottomRightCorner = getDistance(bottomRightCorner);
     
-//    cerr << "distToTopLeftCorner: " << distToTopLeftCorner << endl;
-//    cerr << "distToBottomLeftCorner: " << distToBottomLeftCorner << endl;
-//    cerr << "distToTopRightCorner: " << distToTopRightCorner << endl;
-//    cerr << "distToBottomRightCorner: " << distToBottomRightCorner << endl;
-    
     const float arr[] = {distToTopLeftCorner,distToBottomLeftCorner,distToTopRightCorner,distToBottomRightCorner};
     
     float maxDist = *std::max_element(arr, arr + 4);

@@ -3,6 +3,7 @@
 #include "ofMain.h"
 #include "ofxMultiTouchPad.h"
 #include "Playhead.h"
+#include "PlayheadSeed.h"
 
 
 class ofApp : public ofBaseApp{
