@@ -6,6 +6,10 @@
 #include "Node.h"
 #include "NodeSeed.h"
 #include "TouchManager.h"
+#include "ofxOsc.h"
+
+#define OSC_HOST "localhost"
+#define OSC_PORT 12345
 
 enum CREATE_MODE
 {
@@ -46,6 +50,8 @@ private:
     std::vector<Node*> nodes;
     // stores the distances from each playhead to each node
     std::map<Playhead*, std::map<Node*, float> > distances;
+    ofxOscSender sender;
+
     
     
     // settings

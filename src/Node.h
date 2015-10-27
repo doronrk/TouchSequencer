@@ -19,7 +19,8 @@ public:
     ~Node();
     
     void draw();
-    ofVec2f getPosition();
+    ofVec2f getWindowPosition();
+    ofVec2f getRelativePosition();
     void bang();
     
 private:

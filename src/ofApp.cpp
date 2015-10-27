@@ -4,6 +4,8 @@
 void ofApp::setup()
 {
     touchManager = new TouchManager();
+    sender.setup(OSC_HOST, OSC_PORT);
+
     
     // settings
     playheadSpeedScale = .4;
@@ -168,12 +170,6 @@ void ofApp::nodeCreateMode(TOUCH_DATA data)
 
 void ofApp::updateDistances()
 {
-    // for playhead p
-    //  for node n
-    //   newDist[p, n] = dist(p, n)
-    //   if newDist < 0 && oldDist > 0: bang!
-    //   if newDist > 0 && oldDist < 0: bang!
-    //
     for (std::vector<Playhead*>::iterator itP = playheads.begin(); itP != playheads.end(); ++itP)
     {
         for (std::vector<Node*>::iterator itN = nodes.begin(); itN != nodes.end(); ++ itN)
@@ -201,6 +197,12 @@ void ofApp::updateDistances()
                         float delta = std::abs(oldDistance - newDistance);
                         if (delta <  100)
                         {
+                            ofxOscMessage m;
+                            m.setAddress("/node/bang");
+                            ofVec2f relPos = node->getRelativePosition();
+                            m.addFloatArg(relPos.x);
+                            m.addFloatArg(relPos.y);
+                            sender.sendMessage(m);
                             node->bang();
                         }
                     }
@@ -212,11 +214,7 @@ void ofApp::updateDistances()
                     nodeDistances[node] = newDistance;
                 }
             }
-            // the playhead is not in the map yet
-//            else
-//            {
             distances[playhead][node] = newDistance;
-//            }
         }
     }
 }

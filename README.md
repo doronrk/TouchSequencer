@@ -22,10 +22,10 @@
 Done:
     - Swipe to create playhead
     - Click to create node
+    - playhead passing node makes print statement
 
 
 Features:
-    - playhead passing node makes print statement
     - playhead passing node sends OSC midi
     - special key to create/remove a "metronome playhead" that moves horizontally across the space according to a bpm
     - make the nodes look cool
