@@ -4,7 +4,7 @@
 #include "Playhead.h"
 #include "PlayheadSeed.h"
 #include "Node.h"
-#incldue "NodeSeed.h"
+#include "NodeSeed.h"
 #include "TouchManager.h"
 
 enum CREATE_MODE

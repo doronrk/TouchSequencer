@@ -111,6 +111,7 @@ void ofApp::playheadCreateMode(TOUCH_DATA data)
 //--------------------------------------------------------------
 void ofApp::nodeCreateMode(TOUCH_DATA data)
 {
+    // add node seeds for new touches
     for(std::vector<MTouch>::iterator it = data.newTouches.begin(); it != data.newTouches.end(); ++it)
     {
         MTouch newTouch = *it;
@@ -118,9 +119,44 @@ void ofApp::nodeCreateMode(TOUCH_DATA data)
         float y = newTouch.y;
         x = x * ofGetWindowWidth();
         y = y * ofGetWindowHeight();
-        Node* n = new Node(ofVec2f(x, y));
-        nodes.push_back(n);
-        cerr << "new node created" << endl;
+        NodeSeed* newSeed = new NodeSeed(ofVec2f(x, y));
+        nodeSeeds[newTouch.ID] = newSeed;
+    }
+    
+    // update touch points to existing node seeds for held touches
+    for(std::vector<MTouch>::iterator it = data.heldTouches.begin(); it != data.heldTouches.end(); ++it)
+    {
+        MTouch heldTouch = *it;
+        float x = heldTouch.x;
+        float y = heldTouch.y;
+        x = x * ofGetWindowWidth();
+        y = y * ofGetWindowHeight();
+        int id = heldTouch.ID;
+        std::map<int, NodeSeed*>::iterator pair = nodeSeeds.find(id);
+        if (pair != nodeSeeds.end())
+        {
+            NodeSeed* seed = pair->second;
+            seed->updatePosition(ofVec2f(x, y));
+        }
+    }
+    
+    // convert node seeds to nodes for released touches
+    for(std::vector<int>::iterator it = data.releasedTouchIds.begin(); it != data.releasedTouchIds.end(); ++it)
+    {
+        int releasedId = *it;
+        std::map<int, NodeSeed*>::iterator pair = nodeSeeds.find(releasedId);
+        if (pair != nodeSeeds.end())
+        {
+            //            pair->first;
+            NodeSeed* seed = pair->second;
+            Node* newNode = seed->toNode();
+            if (newNode != NULL)
+            {
+                nodes.push_back(newNode);
+            }
+            nodeSeeds.erase(releasedId);
+            delete seed;
+        }
     }
 }
 
