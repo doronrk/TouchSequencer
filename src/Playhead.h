@@ -20,7 +20,8 @@ public:
     Playhead(ofVec2f position, ofVec2f direction);
     ~Playhead();
     void draw();
-    void update();
+    void update(float speedScale);
+//    void scaleSpeed(float scale);
     
     // Returns the distance (projection error) from ofPoint p to the visible line of the playhead
     // Points that lie in the direction of the playhead will have a positive distance.

@@ -4,7 +4,10 @@
 void ofApp::setup()
 {
     touchManager = new TouchManager();
-    node = ofVec2f(300, 300);
+    
+    // settings
+    playheadSpeedScale = .4;
+    createMode = NODE;
 //    ofSetFrameRate(1);
 }
 
@@ -13,12 +16,22 @@ void ofApp::update()
 {
     for (std::vector<Playhead*>::iterator it = playheads.begin(); it != playheads.end(); ++it)
     {
-        Playhead* playheadToDraw = *it;
-        playheadToDraw->update();
+        Playhead* playhead = *it;
+        playhead->update(playheadSpeedScale);
     }
     
     TOUCH_DATA touchData = touchManager->updateState();
-    playheadMode(touchData);
+    switch (createMode)
+    {
+        case PLAYHEAD:
+            playheadCreateMode(touchData);
+            break;
+        case NODE:
+            nodeCreateMode(touchData);
+            break;
+        default:
+            break;
+    }
 }
 
 //--------------------------------------------------------------
@@ -29,15 +42,19 @@ void ofApp::draw()
     
     for (std::vector<Playhead*>::iterator it = playheads.begin(); it != playheads.end(); ++it)
     {
-        Playhead* playheadToDraw = *it;
-        playheadToDraw->draw();
+        Playhead* playhead = *it;
+        playhead->draw();
     }
     
-    ofCircle(node, 25);
+    for (std::vector<Node*>::iterator it = nodes.begin(); it != nodes.end(); ++it)
+    {
+        Node* node = *it;
+        node->draw();
+    }
 }
 
 //--------------------------------------------------------------
-void ofApp::playheadMode(TOUCH_DATA data)
+void ofApp::playheadCreateMode(TOUCH_DATA data)
 {
     // add playhead seeds for new touches
     for(std::vector<MTouch>::iterator it = data.newTouches.begin(); it != data.newTouches.end(); ++it)
@@ -68,7 +85,6 @@ void ofApp::playheadMode(TOUCH_DATA data)
         }
     }
     
-    
     // convert playhead seeds to playheads for released touches
     for(std::vector<int>::iterator it = data.releasedTouchIds.begin(); it != data.releasedTouchIds.end(); ++it)
     {
@@ -93,83 +109,49 @@ void ofApp::playheadMode(TOUCH_DATA data)
 
 
 //--------------------------------------------------------------
-void ofApp::keyPressed(int key){
+void ofApp::nodeCreateMode(TOUCH_DATA data)
+{
+    for(std::vector<MTouch>::iterator it = data.newTouches.begin(); it != data.newTouches.end(); ++it)
+    {
+        MTouch newTouch = *it;
+        float x = newTouch.x;
+        float y = newTouch.y;
+        x = x * ofGetWindowWidth();
+        y = y * ofGetWindowHeight();
+        Node* n = new Node(ofVec2f(x, y));
+        nodes.push_back(n);
+        cerr << "new node created" << endl;
+    }
+}
+
+
+void ofApp::keyReleased(int key)
+{
+    if (key == OF_KEY_BACKSPACE || key == OF_KEY_DEL)
+    {
+        if (! playheads.empty())
+        {
+            playheads.pop_back();
+        }
+    } else if (key == OF_KEY_ESC)
+    {
+        exit();
+    }
+    
 }
 
 //--------------------------------------------------------------
-void ofApp::keyReleased(int key){
-
+void ofApp::mousePressed(int x, int y, int button)
+{
+    
 }
+
 
 //--------------------------------------------------------------
-void ofApp::mouseMoved(int x, int y ){
-
+void ofApp::exit()
+{
+    ofExit();
 }
 
-//--------------------------------------------------------------
-void ofApp::mouseDragged(int x, int y, int button){
 
-}
-
-//--------------------------------------------------------------
-void ofApp::mousePressed(int x, int y, int button){
-
-}
-
-//--------------------------------------------------------------
-void ofApp::mouseReleased(int x, int y, int button){
-
-}
-
-//--------------------------------------------------------------
-void ofApp::windowResized(int w, int h){
-
-}
-
-//--------------------------------------------------------------
-void ofApp::gotMessage(ofMessage msg){
-
-}
-
-//--------------------------------------------------------------
-void ofApp::dragEvent(ofDragInfo dragInfo){ 
-
-}
-
-//void ofApp::manageTouch()
-//{
-    /*
-     Use the MTouch datatype for more information on touches
-    //     */
-    //    ofSetColor(255, 128, 0);
-    //    std::vector<MTouch> mTouches = pad.getTouches();
-    //    float scale = 100;
-    //    for (std::vector<MTouch>::iterator touch=mTouches.begin(); touch!=mTouches.end(); ++touch)
-    //    {
-    //        float size = touch->size*scale;
-    //        ofPushMatrix();
-    //        ofTranslate(touch->x*ofGetWidth(), touch->y*ofGetHeight());
-    //        ofRotate(touch->angle);
-    //        ofEllipse(0, 0, size, size*.5);
-    //        //        cerr << "id: " << touch->ID << endl;
-    //        ofPopMatrix();
-    //    }
-    //    //    cerr << "end" << endl;
-    //
-    //    /*
-    //     Iterate over all touches as a vector of ofPoints Ð very simple datatype though...
-    //     */
-    //    ofPushMatrix();
-    //    ofSetColor(255, 255, 255);
-    //    pad.getTouchesAsOfPoints(&touches);
-    //    ofPoint size = ofPoint(ofGetWidth(),ofGetHeight(),0);
-    //    ofSetRectMode(OF_RECTMODE_CENTER);
-    //    for (vector<ofPoint>::iterator touch = touches.begin(); touch!=touches.end(); ++touch) {
-    //        ofRect((*touch)*size, 10, 10);
-    //    }
-    //    ofPopMatrix();
-    //
-    //    string info = "Number of touches: "+ofToString(pad.getTouchCount(),0);
-    //    ofDrawBitmapStringHighlight(info, 20, 20);
-//}
 

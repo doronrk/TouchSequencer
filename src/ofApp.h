@@ -3,7 +3,15 @@
 #include "ofMain.h"
 #include "Playhead.h"
 #include "PlayheadSeed.h"
+#include "Node.h"
+#incldue "NodeSeed.h"
 #include "TouchManager.h"
+
+enum CREATE_MODE
+{
+    PLAYHEAD,
+    NODE
+};
 
 
 class ofApp : public ofBaseApp{
@@ -15,24 +23,35 @@ public:
     void draw();
 
 
-    void keyPressed(int key);
     void keyReleased(int key);
-    void mouseMoved(int x, int y );
-    void mouseDragged(int x, int y, int button);
     void mousePressed(int x, int y, int button);
-    void mouseReleased(int x, int y, int button);
-    void windowResized(int w, int h);
-    void dragEvent(ofDragInfo dragInfo);
-    void gotMessage(ofMessage msg);
+
+    void exit();
+
+    
+//    void windowResized(int w, int h);
+//    void mouseReleased(int x, int y, int button);
+//    void keyPressed(int key);
+//    void mouseMoved(int x, int y );
+//    void mouseDragged(int x, int y, int button);
+//    void dragEvent(ofDragInfo dragInfo);
+//    void gotMessage(ofMessage msg);
     
 private:
     TouchManager* touchManager;
-    ofVec2f node;
     std::map<int, PlayheadSeed*> playheadSeeds;
     std::vector<Playhead*> playheads;
+    std::map<int, NodeSeed*> nodeSeeds;
+    std::vector<Node*> nodes;
     
-    void playheadMode(TOUCH_DATA data);
+    // settings
+    float playheadSpeedScale;
+    CREATE_MODE createMode;
     
-//    void manageTouch();
+    void playheadCreateMode(TOUCH_DATA data);
+    void nodeCreateMode(TOUCH_DATA data);
+
+    
+    
     
 };

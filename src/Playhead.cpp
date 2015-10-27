@@ -15,9 +15,9 @@ Playhead::Playhead(ofVec2f position, ofVec2f direction)
 }
 
 
-void Playhead::update()
+void Playhead::update(float speedScale)
 {
-    _position = _position + _direction;
+    _position = _position + _direction*speedScale;
     
     // wraparound the position when the playhead has passed all 4 corners of the window
     // the playhead should wrap to the corner opposite of the most recently passed window corner
@@ -55,7 +55,7 @@ void Playhead::update()
 
 void Playhead::draw()
 {
-    ofCircle(_position, 25.0);
+//    ofCircle(_position, 25.0);
     // update visible line
     ofVec2f ortho = _direction.getPerpendicular();
     float maxLength = 1000;
@@ -67,6 +67,12 @@ void Playhead::draw()
     visibleLine.close();
     visibleLine.draw();
 }
+
+//void Playhead::scaleSpeed(float scale)
+//{
+//    _direction = _direction * scale;
+//}
+
 
 float Playhead::getDistance(ofPoint p)
 {

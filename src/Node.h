@@ -15,10 +15,13 @@
 class Node
 {
 public:
-    Node();
+    Node(ofVec2f position);
     ~Node();
+    
+    void draw();
+    
 private:
-    ofPoint position;
+    ofVec2f _position;
 };
 
 #endif /* defined(__TouchSequencer__Node__) */

@@ -18,8 +18,9 @@ class PlayheadSeed
 public:
     PlayheadSeed(ofVec2f initialPosition);
     ~PlayheadSeed();
-    
+
     void addTouchPosition(ofVec2f position);
+    
     
     /* Creates a playhead with position at the most recent touch position
      and with direction equal to the vector sum of the touches

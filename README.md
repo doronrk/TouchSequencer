@@ -19,8 +19,11 @@
 * sends osc to live
 
 
-Features:
+Done:
     - Swipe to create playhead
+
+
+Features:
     - Click to create node
     - playhead passing node makes print statement
     - playhead passing node sends OSC midi
@@ -33,6 +36,5 @@ Features:
     - scale the speed of all the playheads simultaneously 
     - have the playheads "budge" the nodes
     - playheads can decellerate, die when they get to speed 0
-
     - Add data to playheads
     - Create nodes using trackpad
