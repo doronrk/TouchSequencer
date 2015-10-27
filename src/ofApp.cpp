@@ -4,11 +4,6 @@
 void ofApp::setup()
 {
     touchManager = new TouchManager();
-    ofVec2f initialPos = ofVec2f(200, 200);
-    ofVec2f nextPos = ofVec2f(204, 200);
-    PlayheadSeed* seed = new PlayheadSeed(initialPos);
-    seed->addTouchPosition(nextPos);
-    playhead = seed->toPlayhead();
     node = ofVec2f(300, 300);
 //    ofSetFrameRate(1);
 }
@@ -16,7 +11,12 @@ void ofApp::setup()
 //--------------------------------------------------------------
 void ofApp::update()
 {
-    playhead->update();
+    for (std::vector<Playhead*>::iterator it = playheads.begin(); it != playheads.end(); ++it)
+    {
+        Playhead* playheadToDraw = *it;
+        playheadToDraw->update();
+    }
+    
     TOUCH_DATA touchData = touchManager->updateState();
     playheadMode(touchData);
 }
@@ -26,7 +26,6 @@ void ofApp::draw()
 {
     ofEnableSmoothing();
     ofSetBackgroundColor(0, 0, 0);
-    playhead->draw();
     
     for (std::vector<Playhead*>::iterator it = playheads.begin(); it != playheads.end(); ++it)
     {
@@ -44,7 +43,6 @@ void ofApp::playheadMode(TOUCH_DATA data)
     for(std::vector<MTouch>::iterator it = data.newTouches.begin(); it != data.newTouches.end(); ++it)
     {
         MTouch newTouch = *it;
-        cerr << "newTouch.ID: " << newTouch.ID << endl;
         float x = newTouch.x;
         float y = newTouch.y;
         x = x * ofGetWindowWidth();

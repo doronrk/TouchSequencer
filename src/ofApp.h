@@ -27,7 +27,6 @@ public:
     
 private:
     TouchManager* touchManager;
-    Playhead* playhead;
     ofVec2f node;
     std::map<int, PlayheadSeed*> playheadSeeds;
     std::vector<Playhead*> playheads;
