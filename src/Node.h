@@ -19,6 +19,8 @@ public:
     ~Node();
     
     void draw();
+    ofVec2f getPosition();
+    void bang();
     
 private:
     ofVec2f _position;

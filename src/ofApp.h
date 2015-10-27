@@ -43,15 +43,18 @@ private:
     std::vector<Playhead*> playheads;
     std::map<int, NodeSeed*> nodeSeeds;
     std::vector<Node*> nodes;
+    // stores the distances from each playhead to each node
+    std::map<Playhead*, std::map<Node*, float> > distances;
+    
     
     // settings
     float playheadSpeedScale;
     CREATE_MODE createMode;
     
+    // private methods
     void playheadCreateMode(TOUCH_DATA data);
     void nodeCreateMode(TOUCH_DATA data);
-
-    
+    void updateDistances();
     
     
 };

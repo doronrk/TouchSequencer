@@ -11,6 +11,7 @@
 
 #include <stdio.h>
 #include "ofMain.h"
+#include "Node.h"
 
 using namespace std;
 
@@ -27,6 +28,8 @@ public:
     // Points that lie in the direction of the playhead will have a positive distance.
     // Points that lie behind the direction of the playhead will have a negative distance.
     float getDistance(ofPoint p);
+    
+    float getDistance(Node* n);
     
     // A vector with magnitude corresponding to the speed of the playhead, elements corresponding to direction
     ofVec2f _direction;

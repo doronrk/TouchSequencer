@@ -73,6 +73,11 @@ void Playhead::draw()
 //    _direction = _direction * scale;
 //}
 
+float Playhead::getDistance(Node* n)
+{
+    return getDistance(n->getPosition());
+}
+
 
 float Playhead::getDistance(ofPoint p)
 {

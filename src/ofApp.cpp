@@ -32,6 +32,8 @@ void ofApp::update()
         default:
             break;
     }
+    
+    updateDistances();
 }
 
 //--------------------------------------------------------------
@@ -161,6 +163,55 @@ void ofApp::nodeCreateMode(TOUCH_DATA data)
 }
 
 
+void ofApp::updateDistances()
+{
+    // for playhead p
+    //  for node n
+    //   newDist[p, n] = dist(p, n)
+    //   if newDist < 0 && oldDist > 0: bang!
+    //   if newDist > 0 && oldDist < 0: bang!
+    //
+    for (std::vector<Playhead*>::iterator itP = playheads.begin(); itP != playheads.end(); ++itP)
+    {
+        for (std::vector<Node*>::iterator itN = nodes.begin(); itN != nodes.end(); ++ itN)
+        {
+            Playhead* playhead = *itP;
+            Node* node = *itN;
+            float newDistance = playhead->getDistance(node);
+            
+            std::map<Playhead* , std::map<Node*, float> >::iterator playheadPair = distances.find(playhead);
+            // this playhead is already in the map
+            if (playheadPair != distances.end())
+            {
+                std::map<Node*, float> nodeDistances = playheadPair->second;
+                std::map<Node*, float>::iterator nodePair = nodeDistances.find(node);
+                // this node is already in the map
+                if (nodePair != nodeDistances.end())
+                {
+                    float oldDistance = nodePair->second;
+                    // the playhead has crossed the node if these conditions are met
+                    if ((oldDistance < 0.0 && newDistance >= 0.0) ||
+                        (oldDistance > 0.0 && newDistance <= 0.0))
+                    {
+                        node->bang();
+                    }
+                    
+                }
+                // this node is not in the map yet
+                else
+                {
+                    nodeDistances[node] = newDistance;
+                }
+            }
+            // the playhead is not in the map yet
+//            else
+//            {
+            distances[playhead][node] = newDistance;
+//            }
+        }
+    }
+}
+
 void ofApp::keyReleased(int key)
 {
     if (key == OF_KEY_BACKSPACE || key == OF_KEY_DEL)
@@ -172,8 +223,13 @@ void ofApp::keyReleased(int key)
     } else if (key == OF_KEY_ESC)
     {
         exit();
+    } else if (key == 'p')
+    {
+        createMode = PLAYHEAD;
+    } else if (key == 'n')
+    {
+        createMode = NODE;
     }
-    
 }
 
 //--------------------------------------------------------------
@@ -188,6 +244,4 @@ void ofApp::exit()
 {
     ofExit();
 }
-
-
 
