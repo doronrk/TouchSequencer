@@ -11,6 +11,7 @@
 Node::Node(ofVec2f position)
 {
     _position = position;
+    numBangs = 0;
 }
 
 void Node::draw()
@@ -25,5 +26,6 @@ ofVec2f Node::getPosition()
 
 void Node::bang()
 {
-    cerr << "bang! " << _position << endl;
+    numBangs = numBangs + 1;
+    cerr << "bang! " << numBangs << " " << _position << endl;
 }

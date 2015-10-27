@@ -10,7 +10,8 @@
 enum CREATE_MODE
 {
     PLAYHEAD,
-    NODE
+    NODE,
+    CHILL
 };
 
 

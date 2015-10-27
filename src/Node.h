@@ -24,6 +24,7 @@ public:
     
 private:
     ofVec2f _position;
+    int numBangs;
 };
 
 #endif /* defined(__TouchSequencer__Node__) */

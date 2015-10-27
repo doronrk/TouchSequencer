@@ -29,6 +29,9 @@ void ofApp::update()
         case NODE:
             nodeCreateMode(touchData);
             break;
+        case CHILL:
+            // just chill
+            break;
         default:
             break;
     }
@@ -193,7 +196,13 @@ void ofApp::updateDistances()
                     if ((oldDistance < 0.0 && newDistance >= 0.0) ||
                         (oldDistance > 0.0 && newDistance <= 0.0))
                     {
-                        node->bang();
+                        // the delta is used to avoid banging the nodes when the playheads wraparound the screen
+                        // TODO: figure out a better way to do this
+                        float delta = std::abs(oldDistance - newDistance);
+                        if (delta <  100)
+                        {
+                            node->bang();
+                        }
                     }
                     
                 }
@@ -216,10 +225,27 @@ void ofApp::keyReleased(int key)
 {
     if (key == OF_KEY_BACKSPACE || key == OF_KEY_DEL)
     {
-        if (! playheads.empty())
+        switch (createMode)
         {
-            playheads.pop_back();
+            case PLAYHEAD:
+                if (! playheads.empty())
+                {
+                    playheads.pop_back();
+                }
+                break;
+            case NODE:
+                if (! nodes.empty())
+                {
+                    nodes.pop_back();
+                }
+                break;
+            case CHILL:
+                // just chill
+                break;
+            default:
+                break;
         }
+
     } else if (key == OF_KEY_ESC)
     {
         exit();
@@ -229,6 +255,9 @@ void ofApp::keyReleased(int key)
     } else if (key == 'n')
     {
         createMode = NODE;
+    } else if (key == 'c')
+    {
+        createMode = CHILL;
     }
 }
 
