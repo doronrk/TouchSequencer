@@ -1,19 +1,19 @@
 #pragma once
 
 #include "ofMain.h"
-#include "ofxMultiTouchPad.h"
 #include "Playhead.h"
 #include "PlayheadSeed.h"
+#include "TouchManager.h"
 
 
 class ofApp : public ofBaseApp{
-//    ofxMultiTouchPad pad;
     std::vector<ofPoint> touches;
 
 public:
     void setup();
     void update();
     void draw();
+
 
     void keyPressed(int key);
     void keyReleased(int key);
@@ -26,7 +26,14 @@ public:
     void gotMessage(ofMessage msg);
     
 private:
+    TouchManager* touchManager;
     Playhead* playhead;
     ofVec2f node;
-    void manageTouch();
+    std::map<int, PlayheadSeed*> playheadSeeds;
+    std::vector<Playhead*> playheads;
+    
+    void playheadMode(TOUCH_DATA data);
+    
+//    void manageTouch();
+    
 };

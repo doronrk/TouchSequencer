@@ -13,6 +13,11 @@ PlayheadSeed::PlayheadSeed(ofVec2f initialPosition)
     touchPoints.push_back(initialPosition);
 }
 
+PlayheadSeed::~PlayheadSeed()
+{
+    
+}
+
 
 void PlayheadSeed::addTouchPosition(ofVec2f position)
 {

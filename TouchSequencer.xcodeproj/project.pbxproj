@@ -11,6 +11,7 @@
 		51AB698D1BDEC49F00D5285C /* Util.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 51AB698B1BDEC49F00D5285C /* Util.cpp */; };
 		51AB69901BDECA8F00D5285C /* Node.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 51AB698E1BDECA8F00D5285C /* Node.cpp */; };
 		51AB69931BDECBCB00D5285C /* PlayheadSeed.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 51AB69911BDECBCB00D5285C /* PlayheadSeed.cpp */; };
+		51AB69961BDEE64800D5285C /* TouchManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 51AB69941BDEE64800D5285C /* TouchManager.cpp */; };
 		51CC0F261BD856A700C3D478 /* ofxMultiTouchPad.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 51CC0F241BD856A700C3D478 /* ofxMultiTouchPad.cpp */; };
 		51CC83CF1BD4927500B3D041 /* MultitouchSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 51CC83CE1BD4927500B3D041 /* MultitouchSupport.framework */; };
 		BBAB23CB13894F3D00AA2426 /* GLUT.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = BBAB23BE13894E4700AA2426 /* GLUT.framework */; };
@@ -73,6 +74,8 @@
 		51AB698F1BDECA8F00D5285C /* Node.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Node.h; sourceTree = "<group>"; };
 		51AB69911BDECBCB00D5285C /* PlayheadSeed.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PlayheadSeed.cpp; sourceTree = "<group>"; };
 		51AB69921BDECBCB00D5285C /* PlayheadSeed.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayheadSeed.h; sourceTree = "<group>"; };
+		51AB69941BDEE64800D5285C /* TouchManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TouchManager.cpp; sourceTree = "<group>"; };
+		51AB69951BDEE64800D5285C /* TouchManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TouchManager.h; sourceTree = "<group>"; };
 		51CC0F231BD856A700C3D478 /* MTTypes.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MTTypes.h; sourceTree = "<group>"; };
 		51CC0F241BD856A700C3D478 /* ofxMultiTouchPad.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ofxMultiTouchPad.cpp; sourceTree = "<group>"; };
 		51CC0F251BD856A700C3D478 /* ofxMultiTouchPad.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ofxMultiTouchPad.h; sourceTree = "<group>"; };
@@ -231,6 +234,8 @@
 				51AB698F1BDECA8F00D5285C /* Node.h */,
 				51AB69911BDECBCB00D5285C /* PlayheadSeed.cpp */,
 				51AB69921BDECBCB00D5285C /* PlayheadSeed.h */,
+				51AB69941BDEE64800D5285C /* TouchManager.cpp */,
+				51AB69951BDEE64800D5285C /* TouchManager.h */,
 			);
 			path = src;
 			sourceTree = SOURCE_ROOT;
@@ -338,6 +343,7 @@
 				51AB69901BDECA8F00D5285C /* Node.cpp in Sources */,
 				E4B69E210A3A1BDC003C02F2 /* ofApp.cpp in Sources */,
 				51AB698D1BDEC49F00D5285C /* Util.cpp in Sources */,
+				51AB69961BDEE64800D5285C /* TouchManager.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
