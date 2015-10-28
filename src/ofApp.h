@@ -51,7 +51,8 @@ private:
     // stores the distances from each playhead to each node
     std::map<Playhead*, std::map<Node*, float> > distances;
     ofxOscSender sender;
-    float lastTimeMs;
+    int updateNum;
+    
     
     // images
     ofImage nodeImgOuter;
@@ -60,6 +61,7 @@ private:
     // settings
     float playheadSpeedScale;
     CREATE_MODE createMode;
+    int distCheckResolution;
     
     // private methods
     void playheadCreateMode(TOUCH_DATA data);

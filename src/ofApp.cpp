@@ -8,12 +8,14 @@ void ofApp::setup()
     // initialization and setup
     touchManager = new TouchManager();
     sender.setup(OSC_HOST, OSC_PORT);
-//    nodeImg.loadImage("images/blue-eye.png");
+    updateNum = 0;
     nodeImgOuter.loadImage("images/blue-node.png");
     nodeImgInner.loadImage("images/inner-blur.png");
     // settings
     playheadSpeedScale = .4;
     createMode = NODE;
+    // a number other than 1 causes the program to miss node crossings
+    distCheckResolution = 1;
 }
 
 //--------------------------------------------------------------
@@ -47,8 +49,11 @@ void ofApp::update()
         default:
             break;
     }
-    
-    updateDistances();
+    if (updateNum % distCheckResolution == 0)
+    {
+        updateDistances();
+    }
+    updateNum = updateNum + 1;
 }
 
 //--------------------------------------------------------------

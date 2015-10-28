@@ -22,7 +22,7 @@ Node::Node(ofVec2f position)
     oscillationHeightDelta = ofRandom(4.0, 7.5);
     innerBrightness = 0.0;
     brightnessDecayRate = 1.08;
-    oscillationSpeedDecayRate = 2.0;
+    oscillationSpeedDecayRate = 1.04;
 }
 
 void Node::update(float elapsedTimeS)
@@ -51,7 +51,7 @@ void Node::draw(ofImage inner, ofImage outer)
     unsigned char * pix = inner.getPixels();
     
     for(int i = 0; i < inner.getWidth() * inner.getHeight() * 4; i++){
-        if (i % 4 < 3)
+        if (i % 4 < 2)
         {
             if (pix[i] > 25)
             {
@@ -88,7 +88,7 @@ void Node::bang()
 {
     numBangs = numBangs + 1;
     float brightnessCeiling = 255;
-    float oscillationSpeedCeiling = 5.0;
+    float oscillationSpeedCeiling = 3.0;
     innerBrightness = innerBrightness + (brightnessCeiling - innerBrightness) / 2;
     oscillationExtraSpeed = oscillationExtraSpeed + (oscillationSpeedCeiling - oscillationExtraSpeed) / 2;
 //    cerr << "bang! " << numBangs << " " << _position << endl;
