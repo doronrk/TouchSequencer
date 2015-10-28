@@ -214,6 +214,8 @@ void ofApp::updateDistances()
                             ofVec2f relPos = node->getRelativePosition();
                             m.addFloatArg(relPos.x);
                             m.addFloatArg(relPos.y);
+                            cerr << "relPos.x: " << relPos.x << endl;
+                            cerr << "relPos.y: " << relPos.y << endl;
                             sender.sendMessage(m);
                             node->bang();
                         }

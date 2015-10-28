@@ -9,7 +9,7 @@
 #include "ofxOsc.h"
 
 #define OSC_HOST "localhost"
-#define OSC_PORT 12345
+#define OSC_PORT 12346
 
 enum CREATE_MODE
 {

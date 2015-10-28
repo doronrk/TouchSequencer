@@ -14,7 +14,7 @@ Node::Node(ofVec2f position)
     numBangs = 0;
     baseWidth = 100;
     baseHeight = 100;
-    oscillationBaseSpeed = ofRandom(.8, 1.6);
+    oscillationBaseSpeed = ofRandom(1.3, 2.0);
     oscillationExtraSpeed = 0;
     oscillationWidthPhase = ofRandom(0.0, 2 * pi);
 //    oscillationHeightPhase = ofRandom(0.0, 2 * pi);
@@ -22,7 +22,7 @@ Node::Node(ofVec2f position)
     oscillationHeightDelta = ofRandom(4.0, 7.5);
     innerBrightness = 0.0;
     brightnessDecayRate = 1.08;
-    oscillationSpeedDecayRate = 1.04;
+    oscillationSpeedDecayRate = 1.02;
 }
 
 void Node::update(float elapsedTimeS)
@@ -88,7 +88,7 @@ void Node::bang()
 {
     numBangs = numBangs + 1;
     float brightnessCeiling = 255;
-    float oscillationSpeedCeiling = 3.0;
+    float oscillationSpeedCeiling = 2.5;
     innerBrightness = innerBrightness + (brightnessCeiling - innerBrightness) / 2;
     oscillationExtraSpeed = oscillationExtraSpeed + (oscillationSpeedCeiling - oscillationExtraSpeed) / 2;
 //    cerr << "bang! " << numBangs << " " << _position << endl;
