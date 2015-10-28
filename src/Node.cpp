@@ -14,25 +14,29 @@ Node::Node(ofVec2f position)
     numBangs = 0;
     baseWidth = 100;
     baseHeight = 100;
-    oscillationSpeed = ofRandom(.8, 1.6);
+    oscillationBaseSpeed = ofRandom(.8, 1.6);
+    oscillationExtraSpeed = 0;
     oscillationWidthPhase = ofRandom(0.0, 2 * pi);
 //    oscillationHeightPhase = ofRandom(0.0, 2 * pi);
     oscillationWidthDelta = ofRandom(4.0, 7.5);
     oscillationHeightDelta = ofRandom(4.0, 7.5);
     innerBrightness = 0.0;
     brightnessDecayRate = 1.08;
+    oscillationSpeedDecayRate = 2.0;
 }
 
 void Node::update(float elapsedTimeS)
 {
+    float oscillationSpeed = oscillationBaseSpeed + oscillationExtraSpeed;
     float widthScale = std::sin(oscillationSpeed*elapsedTimeS + oscillationWidthPhase);
     float heightScale = std::sin(oscillationSpeed*elapsedTimeS - pi - .2 + oscillationWidthPhase);
     drawWidthOuter = baseWidth + widthScale * oscillationWidthDelta;
     drawHeightOuter = baseHeight + heightScale * oscillationHeightDelta;
-    float outerInnerRatio = 1.2;
+    float outerInnerRatio = 1.6;
     drawWidthInner = baseWidth/outerInnerRatio - widthScale / outerInnerRatio * oscillationWidthDelta;
     drawHeightInner = baseHeight/outerInnerRatio - heightScale / outerInnerRatio * oscillationHeightDelta;
     innerBrightness = innerBrightness / brightnessDecayRate;
+    oscillationExtraSpeed = oscillationExtraSpeed / oscillationSpeedDecayRate;
 }
 
 
@@ -42,8 +46,7 @@ void Node::draw(ofImage inner, ofImage outer)
     float yTopLeftOuter = _position.y - (drawHeightOuter / 2.0);
     float xTopLeftInner = _position.x - (drawWidthInner / 2.0);
     float yTopLeftInner = _position.y - (drawHeightInner / 2.0);
-//    outer.draw(ofVec2f(xTopLeftOuter, yTopLeftOuter), drawWidthOuter, drawHeightOuter);
-//    inner.draw(ofVec2f(xTopLeftInner, yTopLeftInner), drawWidthInner, drawHeightInner);
+    outer.draw(ofVec2f(xTopLeftOuter, yTopLeftOuter), drawWidthOuter, drawHeightOuter);
     
     unsigned char * pix = inner.getPixels();
     
@@ -85,6 +88,8 @@ void Node::bang()
 {
     numBangs = numBangs + 1;
     float brightnessCeiling = 255;
+    float oscillationSpeedCeiling = 5.0;
     innerBrightness = innerBrightness + (brightnessCeiling - innerBrightness) / 2;
+    oscillationExtraSpeed = oscillationExtraSpeed + (oscillationSpeedCeiling - oscillationExtraSpeed) / 2;
 //    cerr << "bang! " << numBangs << " " << _position << endl;
 }

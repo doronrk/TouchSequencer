@@ -35,13 +35,15 @@ private:
     float drawWidthOuter;
     float drawHeightInner;
     float drawWidthInner;
-    float oscillationSpeed;
+    float oscillationBaseSpeed;
+    float oscillationExtraSpeed;
     float oscillationWidthPhase;
 //    float oscillationHeightPhase;
     float oscillationWidthDelta;
     float oscillationHeightDelta;
     float innerBrightness;
     float brightnessDecayRate;
+    float oscillationSpeedDecayRate;
 };
 
 #endif /* defined(__TouchSequencer__Node__) */
