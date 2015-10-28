@@ -3,23 +3,33 @@
 //--------------------------------------------------------------
 void ofApp::setup()
 {
+    ofBackground(0, 0, 0);
+    
+    // initialization and setup
     touchManager = new TouchManager();
     sender.setup(OSC_HOST, OSC_PORT);
-
-    
+//    nodeImg.loadImage("images/blue-eye.png");
+    nodeImgOuter.loadImage("images/blue-node.png");
+    nodeImgInner.loadImage("images/inner-blur.png");
     // settings
     playheadSpeedScale = .4;
     createMode = NODE;
-//    ofSetFrameRate(1);
 }
 
 //--------------------------------------------------------------
 void ofApp::update()
 {
+    float elapsedTimeS = ofGetElapsedTimef();
     for (std::vector<Playhead*>::iterator it = playheads.begin(); it != playheads.end(); ++it)
     {
         Playhead* playhead = *it;
         playhead->update(playheadSpeedScale);
+    }
+    
+    for (std::vector<Node*>::iterator it = nodes.begin(); it != nodes.end(); ++it)
+    {
+        Node* node = *it;
+        node->update(elapsedTimeS);
     }
     
     TOUCH_DATA touchData = touchManager->updateState();
@@ -32,7 +42,7 @@ void ofApp::update()
             nodeCreateMode(touchData);
             break;
         case CHILL:
-            // just chill
+            // just chill ... |-_-| ...
             break;
         default:
             break;
@@ -45,8 +55,7 @@ void ofApp::update()
 void ofApp::draw()
 {
     ofEnableSmoothing();
-    ofSetBackgroundColor(0, 0, 0);
-    
+
     for (std::vector<Playhead*>::iterator it = playheads.begin(); it != playheads.end(); ++it)
     {
         Playhead* playhead = *it;
@@ -56,7 +65,7 @@ void ofApp::draw()
     for (std::vector<Node*>::iterator it = nodes.begin(); it != nodes.end(); ++it)
     {
         Node* node = *it;
-        node->draw();
+        node->draw(nodeImgInner, nodeImgOuter);
     }
 }
 
@@ -99,7 +108,6 @@ void ofApp::playheadCreateMode(TOUCH_DATA data)
         std::map<int, PlayheadSeed*>::iterator pair = playheadSeeds.find(releasedId);
         if (pair != playheadSeeds.end())
         {
-//            pair->first;
             PlayheadSeed* seed = pair->second;
             Playhead* newPlayhead = seed->toPlayhead();
             if (newPlayhead != NULL)
@@ -193,7 +201,6 @@ void ofApp::updateDistances()
                         (oldDistance > 0.0 && newDistance <= 0.0))
                     {
                         // the delta is used to avoid banging the nodes when the playheads wraparound the screen
-                        // TODO: figure out a better way to do this
                         float delta = std::abs(oldDistance - newDistance);
                         if (delta <  100)
                         {

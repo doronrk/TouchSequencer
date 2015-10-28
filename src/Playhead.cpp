@@ -55,10 +55,10 @@ void Playhead::update(float speedScale)
 
 void Playhead::draw()
 {
-//    ofCircle(_position, 25.0);
     // update visible line
+    ofSetLineWidth(3.0);
     ofVec2f ortho = _direction.getPerpendicular();
-    float maxLength = 1000;
+    float maxLength = 10000;
     ofPoint top = _position - ortho.getNormalized().getScaled(maxLength);
     ofPoint bottom = _position + ortho.getNormalized().getScaled(maxLength);
     ofPolyline visibleLine;
@@ -68,14 +68,9 @@ void Playhead::draw()
     visibleLine.draw();
 }
 
-//void Playhead::scaleSpeed(float scale)
-//{
-//    _direction = _direction * scale;
-//}
-
 float Playhead::getDistance(Node* n)
 {
-    return getDistance(n->getPosition());
+    return getDistance(n->getWindowPosition());
 }
 
 

@@ -51,8 +51,11 @@ private:
     // stores the distances from each playhead to each node
     std::map<Playhead*, std::map<Node*, float> > distances;
     ofxOscSender sender;
-
+    float lastTimeMs;
     
+    // images
+    ofImage nodeImgOuter;
+    ofImage nodeImgInner;
     
     // settings
     float playheadSpeedScale;

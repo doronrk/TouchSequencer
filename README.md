@@ -23,6 +23,8 @@ Done:
     - Swipe to create playhead
     - Click to create node
     - playhead passing node makes print statement
+    - find a way to delete nodes/playheads
+    - Create nodes using trackpad
 
 
 Features:
@@ -32,9 +34,7 @@ Features:
         - have a cool animation when a playhead passes a node
         - Make the nodes look like they're breathing
     - make the playheads look cool
-    - find a way to delete nodes/playheads
     - scale the speed of all the playheads simultaneously 
     - have the playheads "budge" the nodes
     - playheads can decellerate, die when they get to speed 0
     - Add data to playheads
-    - Create nodes using trackpad

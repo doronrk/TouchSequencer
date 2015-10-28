@@ -15,10 +15,13 @@
 class Node
 {
 public:
+    
     Node(ofVec2f position);
     ~Node();
     
+    void update(float elapsedTimeS);
     void draw();
+    void draw(ofImage inner, ofImage outer);
     ofVec2f getWindowPosition();
     ofVec2f getRelativePosition();
     void bang();
@@ -26,6 +29,19 @@ public:
 private:
     ofVec2f _position;
     int numBangs;
+    float baseHeight;
+    float baseWidth;
+    float drawHeightOuter;
+    float drawWidthOuter;
+    float drawHeightInner;
+    float drawWidthInner;
+    float oscillationSpeed;
+    float oscillationWidthPhase;
+//    float oscillationHeightPhase;
+    float oscillationWidthDelta;
+    float oscillationHeightDelta;
+    float innerBrightness;
+    float brightnessDecayRate;
 };
 
 #endif /* defined(__TouchSequencer__Node__) */
