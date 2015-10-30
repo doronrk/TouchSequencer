@@ -25,14 +25,15 @@ Done:
     - playhead passing node makes print statement
     - find a way to delete nodes/playheads
     - Create nodes using trackpad
-
-
-Features:
     - playhead passing node sends OSC midi
-    - special key to create/remove a "metronome playhead" that moves horizontally across the space according to a bpm
     - make the nodes look cool
         - have a cool animation when a playhead passes a node
         - Make the nodes look like they're breathing
+
+
+Features:
+    - special key to create/remove a "metronome playhead" that moves horizontally across the space according to a bpm
+
     - make the playheads look cool
     - scale the speed of all the playheads simultaneously 
     - have the playheads "budge" the nodes

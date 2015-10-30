@@ -11,9 +11,10 @@ void ofApp::setup()
     updateNum = 0;
     nodeImgOuter.loadImage("images/blue-node.png");
     nodeImgInner.loadImage("images/inner-blur.png");
+    ofSetFullscreen(true);
     // settings
     playheadSpeedScale = .4;
-    createMode = NODE;
+    createMode = CHILL;
     // a number other than 1 causes the program to miss node crossings
     distCheckResolution = 1;
 }
@@ -22,27 +23,32 @@ void ofApp::setup()
 void ofApp::update()
 {
     float elapsedTimeS = ofGetElapsedTimef();
+    // update the playheads
     for (std::vector<Playhead*>::iterator it = playheads.begin(); it != playheads.end(); ++it)
     {
         Playhead* playhead = *it;
         playhead->update(playheadSpeedScale);
     }
-    
+    // update the nodes
     for (std::vector<Node*>::iterator it = nodes.begin(); it != nodes.end(); ++it)
     {
         Node* node = *it;
         node->update(elapsedTimeS);
     }
     
+    // Generate touch data.
     TOUCH_DATA touchData = touchManager->updateState();
     switch (createMode)
     {
+        // touches create playheads
         case PLAYHEAD:
             playheadCreateMode(touchData);
             break;
+        // touches create nodes
         case NODE:
             nodeCreateMode(touchData);
             break;
+        // touches do nothing
         case CHILL:
             // just chill ... |-_-| ...
             break;
@@ -61,12 +67,13 @@ void ofApp::draw()
 {
     ofEnableSmoothing();
 
+    // draw the playheads
     for (std::vector<Playhead*>::iterator it = playheads.begin(); it != playheads.end(); ++it)
     {
         Playhead* playhead = *it;
         playhead->draw();
     }
-    
+    // draw the nodes
     for (std::vector<Node*>::iterator it = nodes.begin(); it != nodes.end(); ++it)
     {
         Node* node = *it;
@@ -180,7 +187,7 @@ void ofApp::nodeCreateMode(TOUCH_DATA data)
     }
 }
 
-
+// updateDistances() refreshes the model's coefficient of projection from the nodes onto the playheads. If the value changed sign (the playhead crossed the node), bang() the node.
 void ofApp::updateDistances()
 {
     for (std::vector<Playhead*>::iterator itP = playheads.begin(); itP != playheads.end(); ++itP)
@@ -233,6 +240,7 @@ void ofApp::updateDistances()
 
 void ofApp::keyReleased(int key)
 {
+    // deletes the most recently created node or playhead
     if (key == OF_KEY_BACKSPACE || key == OF_KEY_DEL)
     {
         switch (createMode)

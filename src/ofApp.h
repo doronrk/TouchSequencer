@@ -9,7 +9,7 @@
 #include "ofxOsc.h"
 
 #define OSC_HOST "localhost"
-#define OSC_PORT 12346
+#define OSC_PORT 12347
 
 enum CREATE_MODE
 {
@@ -67,6 +67,7 @@ private:
     void playheadCreateMode(TOUCH_DATA data);
     void nodeCreateMode(TOUCH_DATA data);
     void updateDistances();
+    
     
     
 };
