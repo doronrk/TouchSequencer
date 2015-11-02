@@ -11,7 +11,7 @@ void ofApp::setup()
     updateNum = 0;
     nodeImgOuter.loadImage("images/blue-node.png");
     nodeImgInner.loadImage("images/inner-blur.png");
-    ofSetFullscreen(true);
+//    ofSetFullscreen(trupree);
     // settings
     playheadSpeedScale = .4;
     createMode = CHILL;
